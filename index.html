@@ -1,56 +1,483 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Hanson Cheung</title>
-    <style>
-        body {
-            font-family: Arial;
-            max-width: 800px;
-            margin: auto;
-            padding: 20px;
-        }
-        h1 {
-            color: #333;
-        }
-        .project {
-            margin-bottom: 20px;
-        }
-        .skills {
-            margin-bottom: 20px;
-        }
-        
-        .skill {
-            display: inline-block;
-            background-color: #eee;
-            padding: 8px 12px;
-            margin: 5px;
-            border-radius: 10px;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hanson Cheung — Computer Engineering</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0d0d0f;
+      --surface: #141416;
+      --border: #222226;
+      --text: #e8e8ea;
+      --muted: #5a5a66;
+      --accent: #4af0a8;
+      --accent-dim: rgba(74, 240, 168, 0.08);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Subtle grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.35;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(13,13,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* ── HERO ── */
+    header {
+      padding: 100px 0 80px;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .eyebrow::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.5;
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(42px, 8vw, 72px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: #fff;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero-sub {
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 480px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #0d0d0f;
+      font-weight: 600;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--muted);
+      color: var(--text);
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 64px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label::before {
+      content: '//';
+      opacity: 0.4;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .skill-tag {
+      background: var(--accent-dim);
+      border: 1px solid rgba(74,240,168,0.2);
+      color: var(--accent);
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+
+    .skill-tag.secondary {
+      background: transparent;
+      border-color: var(--border);
+      color: var(--muted);
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(74,240,168,0.25);
+      transform: translateY(-2px);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .project-type {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    .project-date {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .project-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 11px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+      max-width: 600px;
+    }
+
+    .about-text strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 0;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-up {
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+  </style>
 </head>
 <body>
 
-    <h1>Hanson Cheung</h1>
-    <p>Computer Engineering Student</p>
-
-    <h2>Skills</h2>
-    <div class="skills">
-        <span class="skill">C++ (Arduino)</span>
-        <span class="skill">Java</span>
-        <span class="skill">Python</span>
+  <nav>
+    <div class="container">
+      <a class="nav-logo" href="#">HC</a>
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <h2>Projects</h2>
+  <div class="container">
 
-    <div class="project">
-        <h3>Arduino Project</h3>
-        <p>Used C++ (Arduino) to build a system that responds to sensor input.</p>
+    <header>
+      <div class="eyebrow fade-up">Available for opportunities</div>
+      <h1 class="fade-up delay-1">Hanson<br/><span>Cheung.</span></h1>
+      <p class="hero-sub fade-up delay-2">
+        Computer Engineering student. I build things with code — from backend systems to embedded hardware. Currently focused on growing through projects and hands-on experience.
+      </p>
+      <div class="hero-links fade-up delay-3">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="https://github.com/yourusername" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+        <a href="https://linkedin.com/in/yourusername" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+      </div>
+    </header>
+
+    <section id="skills">
+      <div class="section-label">Skills</div>
+      <h2>What I work with</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">C++ (Arduino)</span>
+        <span class="skill-tag">Java</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag secondary">Backend Development</span>
+        <span class="skill-tag secondary">REST APIs</span>
+        <span class="skill-tag secondary">Embedded Systems</span>
+        <span class="skill-tag secondary">Git</span>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-label">Projects</div>
+      <h2>Things I've built</h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-type">Hackathon · Bitcamp</span>
+            <span class="project-date">2025</span>
+          </div>
+          <h3>Friend Finder App</h3>
+          <p>
+            A web application designed to connect people based on shared interests — think dating app, but for finding friends. Built on a team during a 24-hour hackathon. Responsible for backend development, including server logic and data handling to match and surface compatible users.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Backend</span>
+            <span class="tag">Web App</span>
+            <span class="tag">Hackathon</span>
+            <span class="tag">Team Project</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-type">Hardware · Learning</span>
+            <span class="project-date">In Progress</span>
+          </div>
+          <h3>Arduino Explorations</h3>
+          <p>
+            Actively learning embedded systems development through hands-on Arduino projects. Exploring sensor integration, hardware-software interfacing, and low-level C++ programming. More to come as projects develop.
+          </p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">Embedded</span>
+            <span class="tag">In Progress</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="section-label">About</div>
+      <h2>A bit about me</h2>
+      <p class="about-text" style="margin-top: 16px;">
+        I'm a <strong>Computer Engineering student</strong> building my skills through real projects and hands-on work. I've competed in hackathons, explored embedded systems, and I'm always looking for ways to grow as an engineer.<br/><br/>
+        I'm looking for opportunities — internships, projects, or collaborations — where I can contribute and keep learning. If something here catches your eye, feel free to reach out.
+      </p>
+    </section>
+
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Hanson Cheung · Computer Engineering Student · <a href="mailto:you@email.com">you@email.com</a></p>
     </div>
-
-    <div class="project">
-        <h3>Bitcamp Hackathon</h3>
-        <p>Contributed to backend development using APIs and data handling.</p>
-    </div>
+  </footer>
 
 </body>
 </html>
