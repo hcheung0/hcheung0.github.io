@@ -29,7 +29,6 @@
       min-height: 100vh;
     }
 
-    /* Subtle grid background */
     body::before {
       content: '';
       position: fixed;
@@ -51,7 +50,6 @@
       padding: 0 24px;
     }
 
-    /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
@@ -95,7 +93,6 @@
 
     .nav-links a:hover { color: var(--text); }
 
-    /* ── HERO ── */
     header {
       padding: 100px 0 80px;
     }
@@ -185,7 +182,6 @@
       color: var(--text);
     }
 
-    /* ── SECTIONS ── */
     section {
       padding: 64px 0;
       border-top: 1px solid var(--border);
@@ -215,7 +211,6 @@
       margin-bottom: 8px;
     }
 
-    /* ── SKILLS ── */
     .skills-grid {
       display: flex;
       flex-wrap: wrap;
@@ -239,7 +234,6 @@
       color: var(--muted);
     }
 
-    /* ── PROJECTS ── */
     .projects-grid {
       display: grid;
       gap: 16px;
@@ -329,7 +323,30 @@
       letter-spacing: 0.03em;
     }
 
-    /* ── ABOUT ── */
+    .project-media {
+      width: 100%;
+      border-radius: 6px;
+      margin-bottom: 18px;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    .media-wrapper {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 6px;
+      margin-bottom: 18px;
+    }
+
+    .media-wrapper iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
     .about-text {
       color: var(--muted);
       font-size: 13px;
@@ -342,7 +359,6 @@
       font-weight: 400;
     }
 
-    /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 0;
@@ -360,7 +376,6 @@
       text-decoration: none;
     }
 
-    /* ── ANIMATIONS ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -445,18 +460,37 @@
 
         <div class="project-card">
           <div class="project-meta">
-            <span class="project-type">Hardware · Learning</span>
-            <span class="project-date">In Progress</span>
+            <span class="project-type">Embedded Systems · Arduino</span>
+            <span class="project-date">2026</span>
           </div>
-          <h3>Arduino Explorations</h3>
+          <h3>Environmental Monitor</h3>
+
+          <!-- ─── MEDIA: uncomment ONE of the three blocks below ───────────────
+
+          OPTION A — Photo (upload the image file to your repo first):
+          <img src="your-image.jpg" alt="Environmental Monitor" class="project-media"/>
+
+          OPTION B — Video (upload the .mp4 file to your repo first):
+          <video controls class="project-media">
+            <source src="your-video.mp4" type="video/mp4"/>
+          </video>
+
+          OPTION C — YouTube (replace VIDEO_ID with your video's ID from the URL):
+          <div class="media-wrapper">
+            <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen></iframe>
+          </div>
+
+          ──────────────────────────────────────────────────────────────────── -->
+
           <p>
-            Actively learning embedded systems development through hands-on Arduino projects. Exploring sensor integration, hardware-software interfacing, and low-level C++ programming. More to come as projects develop.
+            A real-time environmental monitoring system built with an Arduino Uno, DHT11 sensor, and LCD1602 display. Reads live temperature and humidity data, with a hardware button to toggle between Fahrenheit and Celsius. Implemented software debouncing and non-blocking timing with <code style="color:var(--accent);font-size:12px;">millis()</code> to keep the display responsive at all times.
           </p>
           <div class="project-tags">
             <span class="tag">C++</span>
             <span class="tag">Arduino</span>
             <span class="tag">Embedded</span>
-            <span class="tag">In Progress</span>
+            <span class="tag">DHT11</span>
+            <span class="tag">LCD1602</span>
           </div>
         </div>
 
