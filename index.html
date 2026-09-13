@@ -97,26 +97,6 @@
       padding: 100px 0 80px;
     }
 
-    .eyebrow {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .eyebrow::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: var(--accent);
-      opacity: 0.5;
-    }
-
     h1 {
       font-family: 'Syne', sans-serif;
       font-size: clamp(42px, 8vw, 72px);
@@ -423,13 +403,13 @@
       <div class="section-label">Skills</div>
       <h2>What I work with</h2>
       <div class="skills-grid">
-        <span class="skill-tag">C++ (Arduino)</span>
-        <span class="skill-tag">Java</span>
+        <span class="skill-tag">C++</span>
         <span class="skill-tag">Python</span>
-        <span class="skill-tag">Arduino</span>
-        <span class="skill-tag secondary">Backend Development</span>
-        <span class="skill-tag secondary">REST APIs</span>
+        <span class="skill-tag">Java</span>
         <span class="skill-tag secondary">Embedded Systems</span>
+        <span class="skill-tag secondary">Arduino / PlatformIO</span>
+        <span class="skill-tag secondary">Backend Development</span>
+        <span class="skill-tag secondary">Serial Communication</span>
         <span class="skill-tag secondary">Git</span>
       </div>
     </section>
@@ -460,6 +440,33 @@
 
         <div class="project-card">
           <div class="project-meta">
+            <span class="project-type">Embedded Systems · Python</span>
+            <span class="project-date">2026</span>
+          </div>
+          <h3>Ultrasonic Radar Scanner</h3>
+
+          <!--
+          <video controls class="project-media">
+            <source src="placeholder.mp4" type="video/mp4"/>
+          </video>
+         -->
+
+          <p>
+            A radar system I built from scratch — an Arduino sweeps a servo-mounted ultrasonic sensor across 180°, and a Python app on the PC reads the data over serial and renders it as a live radar display with range rings, a sweep line, and a fading trail of recent detections.
+          </p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">Python</span>
+            <span class="tag">Arduino</span>
+            <span class="tag">pygame</span>
+            <span class="tag">pyserial</span>
+            <span class="tag">HC-SR04</span>
+            <span class="tag">SG90 Servo</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-meta">
             <span class="project-type">Embedded Systems · Arduino</span>
             <span class="project-date">2026</span>
           </div>
@@ -470,7 +477,7 @@
           </video>
 
           <p>
-            A real-time environmental monitoring system built with an Arduino Uno, DHT11 sensor, and LCD1602 display. Reads live temperature and humidity data, with a hardware button to toggle between Fahrenheit and Celsius. Implemented software debouncing and non-blocking timing with <code style="color:var(--accent);font-size:12px;">millis()</code> to keep the display responsive at all times.
+            A temperature and humidity monitor I built using an Arduino Uno, a DHT11 sensor, and an LCD screen. It displays live readings and lets you switch between Fahrenheit and Celsius with a button.
           </p>
           <div class="project-tags">
             <span class="tag">C++</span>
