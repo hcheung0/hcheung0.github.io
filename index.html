@@ -139,6 +139,16 @@
       cursor: pointer;
     }
 
+    .btn-ghost {
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
     section {
       padding: 64px 0;
       border-top: 1px solid var(--border);
@@ -288,22 +298,6 @@
       display: block;
     }
 
-    .media-wrapper {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-      border-radius: 6px;
-      margin-bottom: 18px;
-    }
-
-    .media-wrapper iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: 0;
-    }
-
     footer {
       border-top: 1px solid var(--border);
       padding: 32px 0;
@@ -334,7 +328,6 @@
     .delay-1 { animation-delay: 0.1s; }
     .delay-2 { animation-delay: 0.2s; }
     .delay-3 { animation-delay: 0.35s; }
-    .delay-4 { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
@@ -345,8 +338,8 @@
       <ul class="nav-links">
         <li><a href="#skills">Skills</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#https://github.com/hcheun">Github</a></li>
-        <li><a href="#https://linkedin.com/in/hanson-cheung-6a5a69402">Linkedin</a></li>
+        <li><a href="https://github.com/hcheun">Github</a></li>
+        <li><a href="https://linkedin.com/in/hanson-cheung-6a5a69402">Linkedin</a></li>
       </ul>
     </div>
   </nav>
@@ -356,9 +349,8 @@
     <header>
       <h1 class="fade-up delay-1">Hanson<br/><span>Cheung.</span></h1>
       <p class="hero-sub fade-up delay-2">
-        Computer Engineering student at UMD who's currently focused on growing through projects and hands-on experience.
+        I'm an undergraduate Computer Engineering student at the University of Maryland, College Park who's focused on growing both as a student and a developer. I'm particularly interested in software development and embedded systems, and I enjoy exploring how hardware and software can work together to build practical solutions. I'm always looking for opportunities to learn, improve, and challenge myself through new projects and experiences.
       </p>
-      <div class="hero-links fade-up delay-3">
     </header>
 
     <section id="skills">
@@ -400,7 +392,7 @@
             <span class="tag">Hackathon</span>
             <span class="tag">Team Project</span>
           </div>
-          <a href="https://github.com/danieog/bitcamp2026" target="_blank" class="btn btn-ghost" style="margin-top: 18px; font-size: 11px;">View on GitHub ↗</a>
+          <a href="https://github.com/danieog/bitcamp2026" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="margin-top: 18px; font-size: 11px;">View on GitHub ↗</a>
         </div>
 
         <div class="project-card">
@@ -415,7 +407,7 @@
         </video>
 
           <p>
-            A radar system I built from scratch — an Arduino sweeps a servo-mounted ultrasonic sensor across 180°, and a Python app on the PC reads the data over serial and renders it as a live radar display with range rings, a sweep line, and a fading trail of recent detections. (Sorry I know the video sucks)
+            A radar system I built from scratch using an Arduino, a servo-mounted ultrasonic sensor, and a Python application. The Arduino sweeps the sensor across 180° and transmits measurements over serial, while the Python application processes the data and renders it as a live radar display.
           </p>
           <div class="project-tags">
             <span class="tag">C++</span>
@@ -426,7 +418,7 @@
             <span class="tag">HC-SR04</span>
             <span class="tag">SG90 Servo</span>
           </div>
-          <a href="https://github.com/hcheung0/radar-project" target="_blank" class="btn btn-ghost" style="margin-top: 18px; font-size: 11px;">View on GitHub ↗</a>
+          <a href="https://github.com/hcheung0/radar-project" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="margin-top: 18px; font-size: 11px;">View on GitHub ↗</a>
         </div>
 
         <div class="project-card">
@@ -449,7 +441,7 @@
             <span class="tag">DHT11</span>
             <span class="tag">LCD1602</span>
           </div>
-          <a href="https://github.com/hcheung0/arduino-environmental-monitor" target="_blank" class="btn btn-ghost" style="margin-top: 18px; font-size: 11px;">View on GitHub ↗</a>
+          <a href="https://github.com/hcheung0/arduino-environmental-monitor" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="margin-top: 18px; font-size: 11px;">View on GitHub ↗</a>
         </div>
     </section>
 
