@@ -9,13 +9,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <style>
     :root {
-      --bg: #f6f7fb;
-      --surface: #ffffff;
-      --ink: #0b1020;
-      --muted: #5b6275;
-      --line: #dfe2ec;
-      --accent: #2a4bff;
-      --accent-soft: rgba(42, 75, 255, 0.08);
+      --bg: #f3ecdc;
+      --surface: #f9f4e8;
+      --ink: #181613;
+      --muted: #6d675a;
+      --line: #d6cdb7;
+      --accent: #181613;
+      --accent-soft: rgba(24, 22, 19, 0.06);
       --serif: 'Space Grotesk', system-ui, sans-serif;
       --sans: 'Space Grotesk', system-ui, sans-serif;
       --mono: 'Space Mono', ui-monospace, monospace;
@@ -23,13 +23,13 @@
 
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #080b16;
-        --surface: #0e1324;
-        --ink: #eef1fb;
-        --muted: #8a92aa;
-        --line: #1e2540;
-        --accent: #6b8bff;
-        --accent-soft: rgba(107, 139, 255, 0.12);
+        --bg: #181613;
+        --surface: #1f1c18;
+        --ink: #f3ecdc;
+        --muted: #9a9382;
+        --line: #342f27;
+        --accent: #f3ecdc;
+        --accent-soft: rgba(243, 236, 220, 0.08);
       }
     }
 
@@ -141,7 +141,8 @@
 
     h1 span {
       font-weight: 700;
-      color: var(--accent);
+      color: transparent;
+      -webkit-text-stroke: 2px var(--ink);
     }
 
     .hero-sub {
@@ -340,7 +341,7 @@
     .btn-ghost:hover {
       background: var(--accent);
       border-color: var(--accent);
-      color: #fff;
+      color: var(--bg);
     }
 
     /* ---------- Footer ---------- */
@@ -418,7 +419,7 @@
   <div class="container">
 
     <header>
-      <h1 class="fade-up delay-1">Hanson<br/><span>Cheung.</span></h1>
+      <h1 class="fade-up delay-1">Hanson<br/><span>Cheung</span></h1>
       <p class="hero-sub fade-up delay-2">
         I'm an undergraduate Computer Engineering student at the University of Maryland, College Park who's focused on growing both as a student and a developer. I'm particularly interested in software development and embedded systems, and I enjoy exploring how hardware and software can work together to build practical solutions. I'm always looking for opportunities to learn, improve, and challenge myself through new projects and experiences.
       </p>
